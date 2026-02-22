@@ -12,8 +12,9 @@ import pypdf
 with open('dummy.pdf', 'rb') as outputFile:
     reader = pypdf.PdfReader(outputFile)
     page = reader.get_page(0)
-    print(page.rotate(90))
+    page.rotate(90)
     writer = pypdf.PdfWriter()
+    writer.add_page(page)
     with open('tilt.pdf', 'wb') as new_outputFile:
         writer.write(new_outputFile)
         
